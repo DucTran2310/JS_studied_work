@@ -122,3 +122,47 @@ union([1, 2, 3], [4, 3, 2]); // [1,2,3,4]
 const uniqueElements = arr => [...new Set(arr)];
 
 uniqueElements([1, 2, 2, 3, 4, 4, 5]); // [1, 2, 3, 4, 5]
+
+// 16. Đeuplicate array
+// => This snippet return array no duplicate
+export function deduplicate(arr) {
+  let isExist = (arr, x) => arr.indexOf(x) > -1
+  let ans = []
+
+  arr.forEach((element) => {
+      if (!isExist(ans, element)) ans.push(element)
+  })
+
+  return ans
+}
+
+// 17.getUniqueArray
+//  => Returns only the elements of the array A
+export function getUniqueArray(A, B) {
+let result = []
+for (let i = 0; i < A.length; i++) {
+    let isDuplicate = false
+    for (let j = 0; j < B.length; j++) {
+        if (A[i] === B[j]) {
+            isDuplicate = true
+            break
+        }
+    }
+    if (!isDuplicate) {
+        result.push(A[i])
+    }
+}
+return result
+}
+
+// => Cách làm tối ưu hơn khi mảng A,B lớn
+export function getUniqueArray(A, B) {
+let setA = new Set(A);
+let result = [];
+for (let i = 0; i < B.length; i++) {
+  if (!setA.has(B[i])) {
+    result.push(B[i]);
+  }
+}
+return result;
+}
